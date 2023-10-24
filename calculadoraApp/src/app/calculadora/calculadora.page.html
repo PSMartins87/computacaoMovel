@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Calculadora </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="calculator">
+    <ion-item class="visor-row">
+      <ion-input class="visor" [(ngModel)]="expression"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-fab-button class="clear" (click)="clear()">AC</ion-fab-button>
+      <ion-fab-button (click)="addParentheses(true)">(</ion-fab-button>
+      <ion-fab-button (click)="addParentheses(false)">)</ion-fab-button>
+      <ion-fab-button (click)="backspace()">⌫</ion-fab-button>
+    </ion-item>
+    <ion-item>
+      <ion-fab-button (click)="calculateExponential()">x²</ion-fab-button>
+      <ion-fab-button (click)="calculateSquareRoot()">√</ion-fab-button>
+      <ion-fab-button (click)="addPi()">π</ion-fab-button>
+      <ion-fab-button class="operacao" (click)="appendCharacter('/')"
+        >÷</ion-fab-button
+      >
+    </ion-item>
+    <ion-item>
+      <ion-fab-button (click)="appendCharacter('7')">7</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('8')">8</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('9')">9</ion-fab-button>
+      <ion-fab-button class="operacao" (click)="appendCharacter('*')"
+        >x</ion-fab-button
+      >
+    </ion-item>
+    <ion-item>
+      <ion-fab-button (click)="appendCharacter('4')">4</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('5')">5</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('6')">6</ion-fab-button>
+      <ion-fab-button class="operacao" (click)="appendCharacter('-')"
+        >-</ion-fab-button
+      >
+    </ion-item>
+    <ion-item>
+      <ion-fab-button (click)="appendCharacter('1')">1</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('2')">2</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('3')">3</ion-fab-button>
+      <ion-fab-button class="operacao" (click)="appendCharacter('+')"
+        >+</ion-fab-button
+      >
+    </ion-item>
+    <ion-item>
+      <ion-fab-button (click)="appendCharacter('0')">0</ion-fab-button>
+      <ion-fab-button (click)="calculatePercentage()">%</ion-fab-button>
+      <ion-fab-button (click)="appendCharacter('.')">.</ion-fab-button>
+      <ion-fab-button class="operacao" (click)="calculate()">=</ion-fab-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
