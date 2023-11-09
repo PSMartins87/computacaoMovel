@@ -8,19 +8,19 @@ import { FilmeService, SearchTypes } from 'src/app/model/services/filme.service'
     styleUrls: ['./filmes.page.scss'],
 })
 export class FilmesPage implements OnInit {
-    result!: Observable<any>;
+    resultados!: Observable<any>;
     searchTerms: string = '';
     type: SearchTypes = SearchTypes.all;
     constructor(private omdbApi: FilmeService) { }
 
     search() {
-        this.result = this.omdbApi
-            .getAll(this.searchTerms, this.type)
-            .pipe(map(results => { results['Search'] }))
+        this.resultados = this.omdbApi.getAll(this.searchTerms, this.type).pipe(map(results => {
+            console.log(results)
+            results['Search']
+        }))
+
     }
-
     ngOnInit() {
-
     }
 
 }

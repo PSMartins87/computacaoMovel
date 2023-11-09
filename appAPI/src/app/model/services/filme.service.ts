@@ -5,20 +5,25 @@ export enum SearchTypes {
     all = '',
     movie = 'movie',
     serie = 'serie',
-    episode = 'episode'
+    episode = 'episode',
+    game = 'game'
 }
 @Injectable({
     providedIn: 'root'
 })
 
 export class FilmeService {
-    url = 'http://www.omdbapi.com/';
-    apiKey = '1e264cf3';
+    url = 'https://www.omdbapi.com/';
+    apiKey = 'c5d7a1f2';
     constructor(private http: HttpClient) { }
     getAll(title: string, type: SearchTypes): Observable<any> {
-        return this.http.get(`${this.url}?s=${encodeURI(title)} &type=${type}&apiKey=${this.apiKey}`)
+        console.log(title);
+        console.log(type);
+        console.log(this.apiKey);
+        return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`)
     }
+
     getById(id: any): Observable<any> {
-        return this.http.get(`${this.url}?i=${id} &plot=full&apiKey=${this.apiKey}`)
+        return this.http.get(`${this.url}?i=${id} &plot=full&apikey=${this.apiKey}`)
     }
 }

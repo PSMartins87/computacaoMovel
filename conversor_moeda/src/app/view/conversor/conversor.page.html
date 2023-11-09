@@ -1,0 +1,62 @@
+<ion-searchbar
+  [(ngModel)]="baseCurrency"
+  (ionInput)="onSearchChange('base')"
+></ion-searchbar>
+
+<ion-list *ngIf="showBaseCurrencies">
+  <ion-item
+    *ngFor="let currency of (filteredCurrencies)"
+    (click)="selectCurrency('base', currency)"
+  >
+    <ion-avatar slot="start">
+      <img
+        [src]="getFlag(currency.isoCode)"
+        alt="Bandeira do {{ currency.pais }}"
+      />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ currency.nome }}</h2>
+      <p>{{ currency.pais }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-item>
+  <ion-label position="stacked">Valor de Origem</ion-label>
+  <ion-input type="number" [(ngModel)]="inputValue"></ion-input>
+</ion-item>
+
+<ion-searchbar
+  [(ngModel)]="targetCurrency"
+  (ionInput)="onSearchChange('target')"
+></ion-searchbar>
+
+<ion-list *ngIf="showTargetCurrencies">
+  <ion-item
+    *ngFor="let currency of filteredCurrencies"
+    (click)="selectCurrency('target', currency)"
+  >
+    <ion-avatar slot="start">
+      <img
+        *ngIf="flagUrl"
+        [src]="flagUrl"
+        alt="Bandeira do {{ currency.pais }}"
+        width="16"
+        height="12"
+      />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ currency.nome }}</h2>
+      <p>{{ currency.pais }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-item>
+  <ion-label position="stacked">Valor Convertido</ion-label>
+  <ion-input [(ngModel)]="convertedValue" disabled></ion-input>
+</ion-item>
+<ion-button
+  (click)="converterMoeda(baseCountryCode,targetCountryCode,inputValue)"
+  >Converter</ion-button
+>
